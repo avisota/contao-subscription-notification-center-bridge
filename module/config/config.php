@@ -25,13 +25,13 @@ $GLOBALS['TL_EVENT_SUBSCRIBERS'][] = 'Avisota\Contao\SubscriptionNotificationCen
  */
 $GLOBALS['NOTIFICATION_CENTER']['NOTIFICATION_TYPE']['avisota-subscription'] = array
 (
-	'avisota_subscribe' => array
+	'avisota_subscribe'            => array
 	(
-		'recipients' => array
+		'recipients'           => array
 		(
 			'recipient_email',
 		),
-		'email_sender_name' => array
+		'email_sender_name'    => array
 		(
 			'recipient_name',
 		),
@@ -39,37 +39,45 @@ $GLOBALS['NOTIFICATION_CENTER']['NOTIFICATION_TYPE']['avisota-subscription'] = a
 		(
 			'recipient_email',
 		),
-		'email_recipient_cc' => array
+		'email_recipient_cc'   => array
 		(
 			'recipient_email',
 		),
-		'email_recipient_bcc' => array
+		'email_recipient_bcc'  => array
 		(
 			'datetime',
+			'date',
+			'time',
 			'recipient_type',
 			'recipient_id',
 			'recipient_name',
 			'recipient_email',
 		),
-		'email_subject' => array
+		'email_subject'        => array
 		(
 			'datetime',
+			'date',
+			'time',
 			'recipient_type',
 			'recipient_id',
 			'recipient_name',
 			'recipient_email',
 		),
-		'email_text' => array
+		'email_text'           => array
 		(
 			'datetime',
+			'date',
+			'time',
 			'recipient_type',
 			'recipient_id',
 			'recipient_name',
 			'recipient_email',
 		),
-		'email_html' => array
+		'email_html'           => array
 		(
 			'datetime',
+			'date',
+			'time',
 			'recipient_type',
 			'recipient_id',
 			'recipient_name',
@@ -78,11 +86,11 @@ $GLOBALS['NOTIFICATION_CENTER']['NOTIFICATION_TYPE']['avisota-subscription'] = a
 	),
 	'avisota_confirm_subscription' => array
 	(
-		'recipients' => array
+		'recipients'           => array
 		(
 			'recipient_email',
 		),
-		'email_sender_name' => array
+		'email_sender_name'    => array
 		(
 			'recipient_name',
 		),
@@ -90,50 +98,58 @@ $GLOBALS['NOTIFICATION_CENTER']['NOTIFICATION_TYPE']['avisota-subscription'] = a
 		(
 			'recipient_email',
 		),
-		'email_recipient_cc' => array
+		'email_recipient_cc'   => array
 		(
 			'recipient_email',
 		),
-		'email_recipient_bcc' => array
+		'email_recipient_bcc'  => array
 		(
 			'datetime',
+			'date',
+			'time',
 			'recipient_type',
 			'recipient_id',
 			'recipient_name',
 			'recipient_email',
 		),
-		'email_subject' => array
+		'email_subject'        => array
 		(
 			'datetime',
+			'date',
+			'time',
 			'recipient_type',
 			'recipient_id',
 			'recipient_name',
 			'recipient_email',
 		),
-		'email_text' => array
+		'email_text'           => array
 		(
 			'datetime',
+			'date',
+			'time',
 			'recipient_type',
 			'recipient_id',
 			'recipient_name',
 			'recipient_email',
 		),
-		'email_html' => array
+		'email_html'           => array
 		(
 			'datetime',
+			'date',
+			'time',
 			'recipient_type',
 			'recipient_id',
 			'recipient_name',
 			'recipient_email',
 		),
 	),
-	'avisota_unsubscribe' => array
+	'avisota_unsubscribe'          => array
 	(
-		'recipients' => array
+		'recipients'           => array
 		(
 			'recipient_email',
 		),
-		'email_sender_name' => array
+		'email_sender_name'    => array
 		(
 			'recipient_name',
 		),
@@ -141,37 +157,45 @@ $GLOBALS['NOTIFICATION_CENTER']['NOTIFICATION_TYPE']['avisota-subscription'] = a
 		(
 			'recipient_email',
 		),
-		'email_recipient_cc' => array
+		'email_recipient_cc'   => array
 		(
 			'recipient_email',
 		),
-		'email_recipient_bcc' => array
+		'email_recipient_bcc'  => array
 		(
 			'datetime',
+			'date',
+			'time',
 			'recipient_type',
 			'recipient_id',
 			'recipient_name',
 			'recipient_email',
 		),
-		'email_subject' => array
+		'email_subject'        => array
 		(
 			'datetime',
+			'date',
+			'time',
 			'recipient_type',
 			'recipient_id',
 			'recipient_name',
 			'recipient_email',
 		),
-		'email_text' => array
+		'email_text'           => array
 		(
 			'datetime',
+			'date',
+			'time',
 			'recipient_type',
 			'recipient_id',
 			'recipient_name',
 			'recipient_email',
 		),
-		'email_html' => array
+		'email_html'           => array
 		(
 			'datetime',
+			'date',
+			'time',
 			'recipient_type',
 			'recipient_id',
 			'recipient_name',

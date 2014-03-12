@@ -1,5 +1,5 @@
 {
-	"name":"contao-subscription-notification-center-bridge",
+	"name":"avisota/contao-subscription-notification-center-bridge",
 	"description":"Notification center bridge for the Avisota subscription system.",
 	"keywords":["avisota", "email", "mail", "newsletter", "marketing"],
 	"type":"contao-module",

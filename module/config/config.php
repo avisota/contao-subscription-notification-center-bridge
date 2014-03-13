@@ -33,7 +33,7 @@ $GLOBALS['NOTIFICATION_CENTER']['NOTIFICATION_TYPE']['avisota-subscription'] = a
 		),
 		'email_sender_name'    => array
 		(
-			'recipient_name',
+			'recipient_*',
 		),
 		'email_sender_address' => array
 		(
@@ -48,40 +48,36 @@ $GLOBALS['NOTIFICATION_CENTER']['NOTIFICATION_TYPE']['avisota-subscription'] = a
 			'datetime',
 			'date',
 			'time',
-			'recipient_type',
 			'recipient_id',
-			'recipient_name',
 			'recipient_email',
+			'recipient_*',
 		),
 		'email_subject'        => array
 		(
 			'datetime',
 			'date',
 			'time',
-			'recipient_type',
 			'recipient_id',
-			'recipient_name',
 			'recipient_email',
+			'recipient_*',
 		),
 		'email_text'           => array
 		(
 			'datetime',
 			'date',
 			'time',
-			'recipient_type',
 			'recipient_id',
-			'recipient_name',
 			'recipient_email',
+			'recipient_*',
 		),
 		'email_html'           => array
 		(
 			'datetime',
 			'date',
 			'time',
-			'recipient_type',
 			'recipient_id',
-			'recipient_name',
 			'recipient_email',
+			'recipient_*',
 		),
 	),
 	'avisota_confirm_subscription' => array
@@ -92,7 +88,7 @@ $GLOBALS['NOTIFICATION_CENTER']['NOTIFICATION_TYPE']['avisota-subscription'] = a
 		),
 		'email_sender_name'    => array
 		(
-			'recipient_name',
+			'recipient_*',
 		),
 		'email_sender_address' => array
 		(
@@ -107,40 +103,36 @@ $GLOBALS['NOTIFICATION_CENTER']['NOTIFICATION_TYPE']['avisota-subscription'] = a
 			'datetime',
 			'date',
 			'time',
-			'recipient_type',
 			'recipient_id',
-			'recipient_name',
 			'recipient_email',
+			'recipient_*',
 		),
 		'email_subject'        => array
 		(
 			'datetime',
 			'date',
 			'time',
-			'recipient_type',
 			'recipient_id',
-			'recipient_name',
 			'recipient_email',
+			'recipient_*',
 		),
 		'email_text'           => array
 		(
 			'datetime',
 			'date',
 			'time',
-			'recipient_type',
 			'recipient_id',
-			'recipient_name',
 			'recipient_email',
+			'recipient_*',
 		),
 		'email_html'           => array
 		(
 			'datetime',
 			'date',
 			'time',
-			'recipient_type',
 			'recipient_id',
-			'recipient_name',
 			'recipient_email',
+			'recipient_*',
 		),
 	),
 	'avisota_unsubscribe'          => array
@@ -151,7 +143,7 @@ $GLOBALS['NOTIFICATION_CENTER']['NOTIFICATION_TYPE']['avisota-subscription'] = a
 		),
 		'email_sender_name'    => array
 		(
-			'recipient_name',
+			'recipient_*',
 		),
 		'email_sender_address' => array
 		(
@@ -166,40 +158,36 @@ $GLOBALS['NOTIFICATION_CENTER']['NOTIFICATION_TYPE']['avisota-subscription'] = a
 			'datetime',
 			'date',
 			'time',
-			'recipient_type',
 			'recipient_id',
-			'recipient_name',
 			'recipient_email',
+			'recipient_*',
 		),
 		'email_subject'        => array
 		(
 			'datetime',
 			'date',
 			'time',
-			'recipient_type',
 			'recipient_id',
-			'recipient_name',
 			'recipient_email',
+			'recipient_*',
 		),
 		'email_text'           => array
 		(
 			'datetime',
 			'date',
 			'time',
-			'recipient_type',
 			'recipient_id',
-			'recipient_name',
 			'recipient_email',
+			'recipient_*',
 		),
 		'email_html'           => array
 		(
 			'datetime',
 			'date',
 			'time',
-			'recipient_type',
 			'recipient_id',
-			'recipient_name',
 			'recipient_email',
+			'recipient_*',
 		),
 	),
 );

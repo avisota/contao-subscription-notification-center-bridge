@@ -16,8 +16,10 @@
 namespace Avisota\Contao\SubscriptionNotificationCenterBridge;
 
 use Avisota\Contao\Entity\Subscription;
+use Avisota\Contao\Subscription\Event\ConfirmSubscriptionEvent;
 use Avisota\Contao\Subscription\Event\ResolveRecipientEvent;
 use Avisota\Contao\Subscription\Event\SubscribeEvent;
+use Avisota\Contao\Subscription\Event\UnsubscribeEvent;
 use Avisota\Contao\Subscription\SubscriptionEvents;
 use Avisota\Contao\SubscriptionNotificationCenterBridge\Event\BuildTokensFromRecipientEvent;
 use Avisota\Recipient\RecipientInterface;
@@ -48,13 +50,13 @@ class Bridge implements EventSubscriberInterface
 		$this->sendNotification('avisota_subscribe', $tokens);
 	}
 
-	public function confirm(SubscribeEvent $event)
+	public function confirm(ConfirmSubscriptionEvent $event)
 	{
 		$tokens = $this->buildTokens($event->getSubscription());
 		$this->sendNotification('avisota_confirm_subscription', $tokens);
 	}
 
-	public function unsubscribe(SubscribeEvent $event)
+	public function unsubscribe(UnsubscribeEvent $event)
 	{
 		$tokens = $this->buildTokens($event->getSubscription());
 		$this->sendNotification('avisota_unsubscribe', $tokens);

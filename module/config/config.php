@@ -69,6 +69,8 @@ $GLOBALS['NOTIFICATION_CENTER']['NOTIFICATION_TYPE']['avisota-subscription'] = a
 			'recipient_id',
 			'recipient_email',
 			'recipient_*',
+			'subscription_*',
+			'mailing_list_*',
 		),
 		'email_html'           => array
 		(
@@ -78,6 +80,8 @@ $GLOBALS['NOTIFICATION_CENTER']['NOTIFICATION_TYPE']['avisota-subscription'] = a
 			'recipient_id',
 			'recipient_email',
 			'recipient_*',
+			'subscription_*',
+			'mailing_list_*',
 		),
 	),
 	'avisota_confirm_subscription' => array
@@ -124,6 +128,8 @@ $GLOBALS['NOTIFICATION_CENTER']['NOTIFICATION_TYPE']['avisota-subscription'] = a
 			'recipient_id',
 			'recipient_email',
 			'recipient_*',
+			'subscription_*',
+			'mailing_list_*',
 		),
 		'email_html'           => array
 		(
@@ -133,6 +139,8 @@ $GLOBALS['NOTIFICATION_CENTER']['NOTIFICATION_TYPE']['avisota-subscription'] = a
 			'recipient_id',
 			'recipient_email',
 			'recipient_*',
+			'subscription_*',
+			'mailing_list_*',
 		),
 	),
 	'avisota_unsubscribe'          => array
@@ -179,6 +187,8 @@ $GLOBALS['NOTIFICATION_CENTER']['NOTIFICATION_TYPE']['avisota-subscription'] = a
 			'recipient_id',
 			'recipient_email',
 			'recipient_*',
+			'subscription_*',
+			'mailing_list_*',
 		),
 		'email_html'           => array
 		(
@@ -188,6 +198,8 @@ $GLOBALS['NOTIFICATION_CENTER']['NOTIFICATION_TYPE']['avisota-subscription'] = a
 			'recipient_id',
 			'recipient_email',
 			'recipient_*',
+			'subscription_*',
+			'mailing_list_*',
 		),
 	),
 );

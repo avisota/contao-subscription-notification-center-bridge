@@ -27,6 +27,19 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class SubscriptionNotificationCenterBridgeEvents
 {
 	/**
+	 * The BUILD_TOKENS_FROM_SUBSCRIPTION event occurs when a subscription must converted into tokens,
+	 * when create a notification.
+	 *
+	 * The event listener method receives
+	 * a Avisota\Contao\SubscriptionNotificationCenterBridge\Event\BuildTokensFromSubscriptionEvent instance.
+	 *
+	 * @var string
+	 *
+	 * @api
+	 */
+	const BUILD_TOKENS_FROM_SUBSCRIPTION = 'avisota.subscription-notification-center-bridge.build-tokens-from-subscription';
+
+	/**
 	 * The BUILD_TOKENS_FROM_RECIPIENT event occurs when a recipient must converted into tokens,
 	 * when create a notification.
 	 *

@@ -15,6 +15,17 @@
 
 
 /**
+ * Fields
+ */
+$GLOBALS['TL_LANG']['tl_nc_notification']['avisotaFilterByMailingList'] = array('Send to specific mailing lists only', 'Send this notification only if a specific mailing list is subscribed or unsubscribed.');
+$GLOBALS['TL_LANG']['tl_nc_notification']['avisotaFilteredMailingLists'] = array('Mailing lists', 'Please choose the mailing lists this notification should send for.');
+
+/**
+ * Legends
+ */
+$GLOBALS['TL_LANG']['tl_nc_notification']['avisota_legend'] = 'Avisota';
+
+/**
  * Reference
  */
 $GLOBALS['TL_LANG']['tl_nc_notification']['type']['avisota-subscription']         = 'Avisota Subscription';

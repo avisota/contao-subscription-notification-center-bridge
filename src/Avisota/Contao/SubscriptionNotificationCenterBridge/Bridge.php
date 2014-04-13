@@ -52,20 +52,17 @@ class Bridge implements EventSubscriberInterface
 
 	public function subscribe(SubscribeEvent $event)
 	{
-		$tokens = $this->buildTokens($event->getSubscription());
-		$this->sendNotification('avisota_subscribe', $tokens);
+		$this->sendNotification('avisota_subscribe', $event->getSubscription());
 	}
 
 	public function confirm(ConfirmSubscriptionEvent $event)
 	{
-		$tokens = $this->buildTokens($event->getSubscription());
-		$this->sendNotification('avisota_confirm_subscription', $tokens);
+		$this->sendNotification('avisota_confirm_subscription', $event->getSubscription());
 	}
 
 	public function unsubscribe(UnsubscribeEvent $event)
 	{
-		$tokens = $this->buildTokens($event->getSubscription());
-		$this->sendNotification('avisota_unsubscribe', $tokens);
+		$this->sendNotification('avisota_unsubscribe', $event->getSubscription());
 	}
 
 	/**
@@ -106,12 +103,25 @@ class Bridge implements EventSubscriberInterface
 	 * @param string       $type
 	 * @param \ArrayObject $tokens
 	 */
-	protected function sendNotification($type, \ArrayObject $tokens)
+	protected function sendNotification($type, Subscription $subscription)
 	{
+		$tokens = $this->buildTokens($subscription);
 		$notificationCollection = Notification::findBy('type', $type);
 		if (null !== $notificationCollection) {
 			while ($notificationCollection->next()) {
 				$notification = $notificationCollection->current();
+
+				if ($notification->avisotaFilterByMailingList) {
+					$mailingListId = $subscription->getMailingList()
+						? $subscription->getMailingList()->getId()
+						: null;
+					$selectedMailingLists = deserialize($notification->avisotaFilteredMailingLists, true);
+
+					if (!in_array($mailingListId, $selectedMailingLists)) {
+						continue;
+					}
+				}
+
 				/** @var Notification $notification */
 				$notification->send($tokens->getArrayCopy());
 			}

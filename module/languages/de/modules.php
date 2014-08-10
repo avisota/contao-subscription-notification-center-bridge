@@ -11,6 +11,6 @@
  * last-updated: 2014-03-25T14:15:29+01:00
  */
 
-
+$GLOBALS['TL_LANG']['MOD']['avisota-subscription-notification-center-bridge']['0'] = 'Avisota - Bridge zum Benachrichtigungsscenter';
 $GLOBALS['TL_LANG']['MOD']['avisota-subscription-notification-center-bridge']['1'] = 'Bridge zum Benachrichtigungs-Center für Avisota-Abonnements';
 

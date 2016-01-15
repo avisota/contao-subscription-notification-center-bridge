@@ -159,7 +159,8 @@ class Bridge implements EventSubscriberInterface
      */
     public function buildSubscriptionTokens(BuildTokensFromSubscriptionEvent $event)
     {
-        $eventDispatcher = $event->getDispatcher();
+        /** @var EventDispatcher $eventDispatcher */
+        $eventDispatcher = $GLOBALS['container']['event-dispatcher'];
 
         $subscription = $event->getSubscription();
         $tokens       = $event->getTokens();

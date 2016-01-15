@@ -34,6 +34,11 @@ class BuildTokensFromSubscriptionEvent extends Event
      */
     protected $tokens;
 
+    /**
+     * BuildTokensFromSubscriptionEvent constructor.
+     *
+     * @param $subscription
+     */
     function __construct($subscription)
     {
         $this->subscription = $subscription;

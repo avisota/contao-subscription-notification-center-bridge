@@ -36,6 +36,11 @@ class BuildTokensFromRecipientEvent extends Event
      */
     protected $tokens;
 
+    /**
+     * BuildTokensFromRecipientEvent constructor.
+     *
+     * @param $recipient
+     */
     function __construct($recipient)
     {
         $this->recipient = $recipient;

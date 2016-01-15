@@ -38,7 +38,22 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class Bridge implements EventSubscriberInterface
 {
     /**
-     * {@inheritdoc}
+     * Returns an array of event names this subscriber wants to listen to.
+     *
+     * The array keys are event names and the value can be:
+     *
+     *  * The method name to call (priority defaults to 0)
+     *  * An array composed of the method name to call and the priority
+     *  * An array of arrays composed of the method names to call and respective
+     *    priorities, or 0 if unset
+     *
+     * For instance:
+     *
+     *  * array('eventName' => 'methodName')
+     *  * array('eventName' => array('methodName', $priority))
+     *  * array('eventName' => array(array('methodName1', $priority), array('methodName2'))
+     *
+     * @return array The event names to listen to
      */
     public static function getSubscribedEvents()
     {
@@ -50,16 +65,25 @@ class Bridge implements EventSubscriberInterface
         );
     }
 
+    /**
+     * @param SubscribeEvent $event
+     */
     public function subscribe(SubscribeEvent $event)
     {
         $this->sendNotification('avisota_subscribe', $event->getSubscription());
     }
 
+    /**
+     * @param ConfirmSubscriptionEvent $event
+     */
     public function confirm(ConfirmSubscriptionEvent $event)
     {
         $this->sendNotification('avisota_confirm_subscription', $event->getSubscription());
     }
 
+    /**
+     * @param UnsubscribeEvent $event
+     */
     public function unsubscribe(UnsubscribeEvent $event)
     {
         $this->sendNotification('avisota_unsubscribe', $event->getSubscription());
@@ -101,7 +125,9 @@ class Bridge implements EventSubscriberInterface
 
     /**
      * @param string       $type
-     * @param \ArrayObject $tokens
+     * @param Subscription $subscription
+     *
+     * @internal param \ArrayObject $tokens
      */
     protected function sendNotification($type, Subscription $subscription)
     {
@@ -128,6 +154,9 @@ class Bridge implements EventSubscriberInterface
         }
     }
 
+    /**
+     * @param BuildTokensFromSubscriptionEvent $event
+     */
     public function buildSubscriptionTokens(BuildTokensFromSubscriptionEvent $event)
     {
         $eventDispatcher = $event->getDispatcher();

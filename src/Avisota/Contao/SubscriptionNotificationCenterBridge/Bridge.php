@@ -37,141 +37,140 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 class Bridge implements EventSubscriberInterface
 {
-	/**
-	 * {@inheritdoc}
-	 */
-	public static function getSubscribedEvents()
-	{
-		return array(
-			SubscriptionEvents::SUBSCRIBE            => 'subscribe',
-			SubscriptionEvents::CONFIRM_SUBSCRIPTION => 'confirm',
-			SubscriptionEvents::UNSUBSCRIBE          => 'unsubscribe',
-			SubscriptionNotificationCenterBridgeEvents::BUILD_TOKENS_FROM_SUBSCRIPTION => 'buildSubscriptionTokens',
-		);
-	}
+    /**
+     * {@inheritdoc}
+     */
+    public static function getSubscribedEvents()
+    {
+        return array(
+            SubscriptionEvents::SUBSCRIBE                                              => 'subscribe',
+            SubscriptionEvents::CONFIRM_SUBSCRIPTION                                   => 'confirm',
+            SubscriptionEvents::UNSUBSCRIBE                                            => 'unsubscribe',
+            SubscriptionNotificationCenterBridgeEvents::BUILD_TOKENS_FROM_SUBSCRIPTION => 'buildSubscriptionTokens',
+        );
+    }
 
-	public function subscribe(SubscribeEvent $event)
-	{
-		$this->sendNotification('avisota_subscribe', $event->getSubscription());
-	}
+    public function subscribe(SubscribeEvent $event)
+    {
+        $this->sendNotification('avisota_subscribe', $event->getSubscription());
+    }
 
-	public function confirm(ConfirmSubscriptionEvent $event)
-	{
-		$this->sendNotification('avisota_confirm_subscription', $event->getSubscription());
-	}
+    public function confirm(ConfirmSubscriptionEvent $event)
+    {
+        $this->sendNotification('avisota_confirm_subscription', $event->getSubscription());
+    }
 
-	public function unsubscribe(UnsubscribeEvent $event)
-	{
-		$this->sendNotification('avisota_unsubscribe', $event->getSubscription());
-	}
+    public function unsubscribe(UnsubscribeEvent $event)
+    {
+        $this->sendNotification('avisota_unsubscribe', $event->getSubscription());
+    }
 
-	/**
-	 * @param Subscription $subscription
-	 *
-	 * @return \ArrayObject
-	 */
-	protected function buildTokens(Subscription $subscription)
-	{
-		/** @var EventDispatcher $eventDispatcher */
-		$eventDispatcher = $GLOBALS['container']['event-dispatcher'];
+    /**
+     * @param Subscription $subscription
+     *
+     * @return \ArrayObject
+     */
+    protected function buildTokens(Subscription $subscription)
+    {
+        /** @var EventDispatcher $eventDispatcher */
+        $eventDispatcher = $GLOBALS['container']['event-dispatcher'];
 
-		$event = new ResolveRecipientEvent($subscription);
-		$eventDispatcher->dispatch(SubscriptionEvents::RESOLVE_RECIPIENT, $event);
+        $event = new ResolveRecipientEvent($subscription);
+        $eventDispatcher->dispatch(SubscriptionEvents::RESOLVE_RECIPIENT, $event);
 
-		$recipient = $event->getRecipient();
+        $recipient = $event->getRecipient();
 
-		$tokens = new \ArrayObject();
+        $tokens = new \ArrayObject();
 
-		$event = new BuildTokensFromSubscriptionEvent($subscription);
-		$eventDispatcher->dispatch(SubscriptionNotificationCenterBridgeEvents::BUILD_TOKENS_FROM_SUBSCRIPTION, $event);
+        $event = new BuildTokensFromSubscriptionEvent($subscription);
+        $eventDispatcher->dispatch(SubscriptionNotificationCenterBridgeEvents::BUILD_TOKENS_FROM_SUBSCRIPTION, $event);
 
-		foreach ($event->getTokens() as $key => $value) {
-			$tokens[$key] = $value;
-		}
+        foreach ($event->getTokens() as $key => $value) {
+            $tokens[$key] = $value;
+        }
 
-		$event = new BuildTokensFromRecipientEvent($recipient);
-		$eventDispatcher->dispatch(SubscriptionNotificationCenterBridgeEvents::BUILD_TOKENS_FROM_RECIPIENT, $event);
+        $event = new BuildTokensFromRecipientEvent($recipient);
+        $eventDispatcher->dispatch(SubscriptionNotificationCenterBridgeEvents::BUILD_TOKENS_FROM_RECIPIENT, $event);
 
-		foreach ($event->getTokens() as $key => $value) {
-			$tokens[$key] = $value;
-		}
+        foreach ($event->getTokens() as $key => $value) {
+            $tokens[$key] = $value;
+        }
 
-		return $tokens;
-	}
+        return $tokens;
+    }
 
-	/**
-	 * @param string       $type
-	 * @param \ArrayObject $tokens
-	 */
-	protected function sendNotification($type, Subscription $subscription)
-	{
-		$tokens = $this->buildTokens($subscription);
-		$notificationCollection = Notification::findBy('type', $type);
-		if (null !== $notificationCollection) {
-			while ($notificationCollection->next()) {
-				$notification = $notificationCollection->current();
+    /**
+     * @param string       $type
+     * @param \ArrayObject $tokens
+     */
+    protected function sendNotification($type, Subscription $subscription)
+    {
+        $tokens                 = $this->buildTokens($subscription);
+        $notificationCollection = Notification::findBy('type', $type);
+        if (null !== $notificationCollection) {
+            while ($notificationCollection->next()) {
+                $notification = $notificationCollection->current();
 
-				if ($notification->avisotaFilterByMailingList) {
-					$mailingListId = $subscription->getMailingList()
-						? $subscription->getMailingList()->getId()
-						: null;
-					$selectedMailingLists = deserialize($notification->avisotaFilteredMailingLists, true);
+                if ($notification->avisotaFilterByMailingList) {
+                    $mailingListId        = $subscription->getMailingList()
+                        ? $subscription->getMailingList()->getId()
+                        : null;
+                    $selectedMailingLists = deserialize($notification->avisotaFilteredMailingLists, true);
 
-					if (!in_array($mailingListId, $selectedMailingLists)) {
-						continue;
-					}
-				}
+                    if (!in_array($mailingListId, $selectedMailingLists)) {
+                        continue;
+                    }
+                }
 
-				/** @var Notification $notification */
-				$notification->send($tokens->getArrayCopy());
-			}
-		}
-	}
+                /** @var Notification $notification */
+                $notification->send($tokens->getArrayCopy());
+            }
+        }
+    }
 
-	public function buildSubscriptionTokens(BuildTokensFromSubscriptionEvent $event)
-	{
-		$eventDispatcher = $event->getDispatcher();
+    public function buildSubscriptionTokens(BuildTokensFromSubscriptionEvent $event)
+    {
+        $eventDispatcher = $event->getDispatcher();
 
-		$subscription = $event->getSubscription();
-		$tokens = $event->getTokens();
+        $subscription = $event->getSubscription();
+        $tokens       = $event->getTokens();
 
-		$parseDateEvent = new ParseDateEvent($subscription->getUpdatedAt()->getTimestamp(), $GLOBALS['TL_CONFIG']['datimFormat']);
-		$eventDispatcher->dispatch(ContaoEvents::DATE_PARSE, $parseDateEvent);
-		$tokens['datetime'] = $parseDateEvent->getResult();
+        $parseDateEvent = new ParseDateEvent($subscription->getUpdatedAt()->getTimestamp(), $GLOBALS['TL_CONFIG']['datimFormat']);
+        $eventDispatcher->dispatch(ContaoEvents::DATE_PARSE, $parseDateEvent);
+        $tokens['datetime'] = $parseDateEvent->getResult();
 
-		$parseDateEvent = new ParseDateEvent($subscription->getUpdatedAt()->getTimestamp(), $GLOBALS['TL_CONFIG']['dateFormat']);
-		$eventDispatcher->dispatch(ContaoEvents::DATE_PARSE, $parseDateEvent);
-		$tokens['date'] = $parseDateEvent->getResult();
+        $parseDateEvent = new ParseDateEvent($subscription->getUpdatedAt()->getTimestamp(), $GLOBALS['TL_CONFIG']['dateFormat']);
+        $eventDispatcher->dispatch(ContaoEvents::DATE_PARSE, $parseDateEvent);
+        $tokens['date'] = $parseDateEvent->getResult();
 
-		$parseDateEvent = new ParseDateEvent($subscription->getUpdatedAt()->getTimestamp(), $GLOBALS['TL_CONFIG']['timeFormat']);
-		$eventDispatcher->dispatch(ContaoEvents::DATE_PARSE, $parseDateEvent);
-		$tokens['time'] = $parseDateEvent->getResult();
+        $parseDateEvent = new ParseDateEvent($subscription->getUpdatedAt()->getTimestamp(), $GLOBALS['TL_CONFIG']['timeFormat']);
+        $eventDispatcher->dispatch(ContaoEvents::DATE_PARSE, $parseDateEvent);
+        $tokens['time'] = $parseDateEvent->getResult();
 
-		/** @var EntityAccessor $entityAccessor */
-		$entityAccessor = $GLOBALS['container']['doctrine.orm.entityAccessor'];
+        /** @var EntityAccessor $entityAccessor */
+        $entityAccessor = $GLOBALS['container']['doctrine.orm.entityAccessor'];
 
-		$properties = $entityAccessor->getProperties($subscription);
+        $properties = $entityAccessor->getProperties($subscription);
 
-		foreach ($properties as $key => $value) {
-			if (!is_object($value)) {
-				$tokens['subscription_' . $key] = $value;
-			}
-		}
+        foreach ($properties as $key => $value) {
+            if (!is_object($value)) {
+                $tokens['subscription_' . $key] = $value;
+            }
+        }
 
-		$mailingList = $subscription->getMailingList();
+        $mailingList = $subscription->getMailingList();
 
-		if ($mailingList) {
-			$properties = $entityAccessor->getProperties($mailingList);
+        if ($mailingList) {
+            $properties = $entityAccessor->getProperties($mailingList);
 
-			foreach ($properties as $key => $value) {
-				if (!is_object($value)) {
-					$tokens['mailing_list_' . $key] = $value;
-				}
-			}
-		}
-		else {
-			$tokens['mailing_list_id'] = 0;
-			$tokens['mailing_list_title'] = 'global';
-		}
-	}
+            foreach ($properties as $key => $value) {
+                if (!is_object($value)) {
+                    $tokens['mailing_list_' . $key] = $value;
+                }
+            }
+        } else {
+            $tokens['mailing_list_id']    = 0;
+            $tokens['mailing_list_title'] = 'global';
+        }
+    }
 }

@@ -13,11 +13,10 @@
  * @filesource
  */
 
-
 /**
  * Module
  */
 $GLOBALS['TL_LANG']['MOD']['avisota-subscription-notification-center-bridge'] = array(
-	'Avisota - Subscription NotificationCenter Bridge',
-	'Bridge to the notification_center for Avisota subscriptions.'
+    'Avisota - Subscription NotificationCenter Bridge',
+    'Bridge to the notification_center for Avisota subscriptions.'
 );

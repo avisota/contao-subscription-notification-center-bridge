@@ -15,40 +15,36 @@
 
 namespace Avisota\Contao\SubscriptionNotificationCenterBridge;
 
-use Avisota\Contao\Subscription\Event\SubscribeEvent;
-use Avisota\Contao\Subscription\SubscriptionEvents;
-use Avisota\Recipient\RecipientInterface;
 use NotificationCenter\Model\Notification;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Class Bridge
  */
 class SubscriptionNotificationCenterBridgeEvents
 {
-	/**
-	 * The BUILD_TOKENS_FROM_SUBSCRIPTION event occurs when a subscription must converted into tokens,
-	 * when create a notification.
-	 *
-	 * The event listener method receives
-	 * a Avisota\Contao\SubscriptionNotificationCenterBridge\Event\BuildTokensFromSubscriptionEvent instance.
-	 *
-	 * @var string
-	 *
-	 * @api
-	 */
-	const BUILD_TOKENS_FROM_SUBSCRIPTION = 'avisota.subscription-notification-center-bridge.build-tokens-from-subscription';
+    /**
+     * The BUILD_TOKENS_FROM_SUBSCRIPTION event occurs when a subscription must converted into tokens,
+     * when create a notification.
+     *
+     * The event listener method receives
+     * a Avisota\Contao\SubscriptionNotificationCenterBridge\Event\BuildTokensFromSubscriptionEvent instance.
+     *
+     * @var string
+     *
+     * @api
+     */
+    const BUILD_TOKENS_FROM_SUBSCRIPTION = 'avisota.subscription-notification-center-bridge.build-tokens-from-subscription';
 
-	/**
-	 * The BUILD_TOKENS_FROM_RECIPIENT event occurs when a recipient must converted into tokens,
-	 * when create a notification.
-	 *
-	 * The event listener method receives
-	 * a Avisota\Contao\SubscriptionNotificationCenterBridge\Event\BuildTokensFromRecipientEvent instance.
-	 *
-	 * @var string
-	 *
-	 * @api
-	 */
-	const BUILD_TOKENS_FROM_RECIPIENT = 'avisota.subscription-notification-center-bridge.build-tokens-from-recipient';
+    /**
+     * The BUILD_TOKENS_FROM_RECIPIENT event occurs when a recipient must converted into tokens,
+     * when create a notification.
+     *
+     * The event listener method receives
+     * a Avisota\Contao\SubscriptionNotificationCenterBridge\Event\BuildTokensFromRecipientEvent instance.
+     *
+     * @var string
+     *
+     * @api
+     */
+    const BUILD_TOKENS_FROM_RECIPIENT = 'avisota.subscription-notification-center-bridge.build-tokens-from-recipient';
 }

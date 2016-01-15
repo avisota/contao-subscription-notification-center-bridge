@@ -24,47 +24,47 @@ use Symfony\Component\EventDispatcher\Event;
  */
 class BuildTokensFromSubscriptionEvent extends Event
 {
-	/**
-	 * @var Subscription
-	 */
-	protected $subscription;
+    /**
+     * @var Subscription
+     */
+    protected $subscription;
 
-	/**
-	 * @var \ArrayObject
-	 */
-	protected $tokens;
+    /**
+     * @var \ArrayObject
+     */
+    protected $tokens;
 
-	function __construct($subscription)
-	{
-		$this->subscription = $subscription;
-		$this->tokens    = new \ArrayObject();
-	}
+    function __construct($subscription)
+    {
+        $this->subscription = $subscription;
+        $this->tokens       = new \ArrayObject();
+    }
 
-	/**
-	 * @return Subscription
-	 */
-	public function getSubscription()
-	{
-		return $this->subscription;
-	}
+    /**
+     * @return Subscription
+     */
+    public function getSubscription()
+    {
+        return $this->subscription;
+    }
 
-	/**
-	 * @return \ArrayObject
-	 */
-	public function getTokens()
-	{
-		return $this->tokens;
-	}
+    /**
+     * @return \ArrayObject
+     */
+    public function getTokens()
+    {
+        return $this->tokens;
+    }
 
-	/**
-	 * Add some tokens.
-	 *
-	 * @param array|\Traversable $tokens
-	 */
-	public function addTokens($tokens)
-	{
-		foreach ($tokens as $name => $value) {
-			$this->tokens[$name] = $value;
-		}
-	}
+    /**
+     * Add some tokens.
+     *
+     * @param array|\Traversable $tokens
+     */
+    public function addTokens($tokens)
+    {
+        foreach ($tokens as $name => $value) {
+            $this->tokens[$name] = $value;
+        }
+    }
 }

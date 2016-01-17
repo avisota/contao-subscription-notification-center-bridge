@@ -43,7 +43,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Avisota\\Contao\\SubscriptionNotificationCenterBridge": "src/"
+            "Avisota\\Contao\\SubscriptionNotificationCenterBridge\\": "src/"
         }
     },
     "extra": {

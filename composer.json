@@ -50,12 +50,6 @@
         "contao": {
             "sources": {
                 "contao": "system/modules/avisota-subscription-notification-center-bridge"
-            },
-            "transifex": {
-                "project": "avisota-contao",
-                "prefix": "contao-subscription-notification-center-bridge-",
-                "languages_cto": "contao/languages",
-                "languages_tx": ".tx"
             }
         },
         "branch-alias": {

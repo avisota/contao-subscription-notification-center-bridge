@@ -1,0 +1,42 @@
+<?xml version="1.0" ?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file datatype="php" date="2014-05-06T04:04:13+02:00" original="tl_nc_notification" source-language="en" target-language="en">
+    <body>
+      <trans-unit id="tl_nc_notification.type.avisota-subscription">
+        <source>Avisota Subscription</source>
+        
+      </trans-unit>
+      <trans-unit id="tl_nc_notification.type.avisota_subscribe">
+        <source>Subscribe</source>
+        
+      </trans-unit>
+      <trans-unit id="tl_nc_notification.type.avisota_confirm_subscription">
+        <source>Confirm subscription</source>
+        
+      </trans-unit>
+      <trans-unit id="tl_nc_notification.type.avisota_unsubscribe">
+        <source>Unsubscribe</source>
+        
+      </trans-unit>
+      <trans-unit id="tl_nc_notification.avisotaFilterByMailingList.0">
+        <source>Send to specific mailing lists only</source>
+        
+      </trans-unit>
+      <trans-unit id="tl_nc_notification.avisotaFilterByMailingList.1">
+        <source>Send this notification only if a specific mailing list is subscribed or unsubscribed.</source>
+        
+      </trans-unit>
+      <trans-unit id="tl_nc_notification.avisotaFilteredMailingLists.0">
+        <source>Mailing lists</source>
+        
+      </trans-unit>
+      <trans-unit id="tl_nc_notification.avisotaFilteredMailingLists.1">
+        <source>Please choose the mailing lists this notification should send for.</source>
+        
+      </trans-unit>
+      <trans-unit id="tl_nc_notification.avisota_legend">
+        <source>Avisota</source>
+        
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

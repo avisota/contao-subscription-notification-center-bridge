@@ -1,0 +1,14 @@
+<?xml version="1.0" ?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file datatype="php" date="2014-05-06T04:04:13+02:00" original="modules" source-language="en" target-language="it">
+    <body>
+      <trans-unit id="MOD.avisota-subscription-notification-center-bridge.0">
+        <source>Avisota - Subscription NotificationCenter Bridge</source>
+        
+      </trans-unit>
+      <trans-unit id="MOD.avisota-subscription-notification-center-bridge.1">
+        <source>Bridge to the notification_center for Avisota subscriptions.</source>
+        
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

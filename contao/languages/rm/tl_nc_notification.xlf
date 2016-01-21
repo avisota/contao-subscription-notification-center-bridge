@@ -1,0 +1,51 @@
+<?xml version="1.0" ?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file datatype="php" date="2014-05-06T04:04:13+02:00" original="tl_nc_notification" source-language="en" target-language="rm">
+    <body>
+      <trans-unit id="tl_nc_notification.type.avisota-subscription">
+        <source>Avisota Subscription</source>
+        <target>Abunament dad Avisota</target>
+        
+      </trans-unit>
+      <trans-unit id="tl_nc_notification.type.avisota_subscribe">
+        <source>Subscribe</source>
+        <target>Abunar</target>
+        
+      </trans-unit>
+      <trans-unit id="tl_nc_notification.type.avisota_confirm_subscription">
+        <source>Confirm subscription</source>
+        <target>Confermar l'abunament</target>
+        
+      </trans-unit>
+      <trans-unit id="tl_nc_notification.type.avisota_unsubscribe">
+        <source>Unsubscribe</source>
+        <target>De-abunar</target>
+        
+      </trans-unit>
+      <trans-unit id="tl_nc_notification.avisotaFilterByMailingList.0">
+        <source>Send to specific mailing lists only</source>
+        <target>Be trametter a glistas da mail specificas</target>
+        
+      </trans-unit>
+      <trans-unit id="tl_nc_notification.avisotaFilterByMailingList.1">
+        <source>Send this notification only if a specific mailing list is subscribed or unsubscribed.</source>
+        <target>Be trametter quest avis sche ina glista da mail specifica è vegnida abunada u de-abunada.</target>
+        
+      </trans-unit>
+      <trans-unit id="tl_nc_notification.avisotaFilteredMailingLists.0">
+        <source>Mailing lists</source>
+        <target>Glistas da mail</target>
+        
+      </trans-unit>
+      <trans-unit id="tl_nc_notification.avisotaFilteredMailingLists.1">
+        <source>Please choose the mailing lists this notification should send for.</source>
+        <target>Tscherna las glistas da mail per las qualas quest avis duai vegnir activà.</target>
+        
+      </trans-unit>
+      <trans-unit id="tl_nc_notification.avisota_legend">
+        <source>Avisota</source>
+        <target>Avisota</target>
+        
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

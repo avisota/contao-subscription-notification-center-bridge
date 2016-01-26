@@ -44,6 +44,11 @@
             "Avisota\\Contao\\SubscriptionNotificationCenterBridge\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Avisota\\Test\\Contao\\SubscriptionNotificationCenterBridge\\": "tests/Test/"
+        }
+    },
     "extra": {
         "contao": {
             "sources": {

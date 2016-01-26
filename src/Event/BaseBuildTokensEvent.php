@@ -15,35 +15,37 @@
 
 namespace Avisota\Contao\SubscriptionNotificationCenterBridge\Event;
 
-use NotificationCenter\Model\Notification;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
- * Class Bridge
+ * Class BaseBuildTokensEvent
+ *
+ * @package Avisota\Contao\SubscriptionNotificationCenterBridge\Event
  */
-class BuildTokensFromRecipientEvent extends BaseBuildTokensEvent
+abstract class BaseBuildTokensEvent extends Event
 {
     /**
-     * @var mixed
+     * @var \ArrayObject
      */
-    protected $recipient;
+    protected $tokens;
 
     /**
-     * BuildTokensFromRecipientEvent constructor.
-     *
-     * @param $recipient
+     * @return \ArrayObject
      */
-    public function __construct($recipient)
+    public function getTokens()
     {
-        $this->recipient = $recipient;
-        $this->tokens    = new \ArrayObject();
+        return $this->tokens;
     }
 
     /**
-     * @return mixed
+     * Add some tokens.
+     *
+     * @param array|\Traversable $tokens
      */
-    public function getRecipient()
+    public function addTokens($tokens)
     {
-        return $this->recipient;
+        foreach ($tokens as $name => $value) {
+            $this->tokens[$name] = $value;
+        }
     }
 }

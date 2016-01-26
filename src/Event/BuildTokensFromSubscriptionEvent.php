@@ -22,7 +22,7 @@ use Symfony\Component\EventDispatcher\Event;
 /**
  * Class Bridge
  */
-class BuildTokensFromSubscriptionEvent extends Event
+class BuildTokensFromSubscriptionEvent extends BaseBuildTokensEvent
 {
     /**
      * @var Subscription
@@ -30,16 +30,11 @@ class BuildTokensFromSubscriptionEvent extends Event
     protected $subscription;
 
     /**
-     * @var \ArrayObject
-     */
-    protected $tokens;
-
-    /**
      * BuildTokensFromSubscriptionEvent constructor.
      *
      * @param $subscription
      */
-    function __construct($subscription)
+    public function __construct($subscription)
     {
         $this->subscription = $subscription;
         $this->tokens       = new \ArrayObject();
@@ -51,25 +46,5 @@ class BuildTokensFromSubscriptionEvent extends Event
     public function getSubscription()
     {
         return $this->subscription;
-    }
-
-    /**
-     * @return \ArrayObject
-     */
-    public function getTokens()
-    {
-        return $this->tokens;
-    }
-
-    /**
-     * Add some tokens.
-     *
-     * @param array|\Traversable $tokens
-     */
-    public function addTokens($tokens)
-    {
-        foreach ($tokens as $name => $value) {
-            $this->tokens[$name] = $value;
-        }
     }
 }

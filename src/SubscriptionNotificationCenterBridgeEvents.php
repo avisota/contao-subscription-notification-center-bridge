@@ -33,7 +33,8 @@ class SubscriptionNotificationCenterBridgeEvents
      *
      * @api
      */
-    const BUILD_TOKENS_FROM_SUBSCRIPTION = 'avisota.subscription-notification-center-bridge.build-tokens-from-subscription';
+    const BUILD_TOKENS_FROM_SUBSCRIPTION =
+        'avisota.subscription-notification-center-bridge.build-tokens-from-subscription';
 
     /**
      * The BUILD_TOKENS_FROM_RECIPIENT event occurs when a recipient must converted into tokens,
@@ -46,5 +47,6 @@ class SubscriptionNotificationCenterBridgeEvents
      *
      * @api
      */
-    const BUILD_TOKENS_FROM_RECIPIENT = 'avisota.subscription-notification-center-bridge.build-tokens-from-recipient';
+    const BUILD_TOKENS_FROM_RECIPIENT =
+        'avisota.subscription-notification-center-bridge.build-tokens-from-recipient';
 }

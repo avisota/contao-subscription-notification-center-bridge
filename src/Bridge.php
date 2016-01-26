@@ -32,6 +32,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Class Bridge
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class Bridge implements EventSubscriberInterface
 {
@@ -94,8 +95,10 @@ class Bridge implements EventSubscriberInterface
      */
     protected function buildTokens(Subscription $subscription)
     {
+        global $container;
+
         /** @var EventDispatcher $eventDispatcher */
-        $eventDispatcher = $GLOBALS['container']['event-dispatcher'];
+        $eventDispatcher = $container['event-dispatcher'];
 
         $event = new ResolveRecipientEvent($subscription);
         $eventDispatcher->dispatch(SubscriptionEvents::RESOLVE_RECIPIENT, $event);
@@ -126,6 +129,7 @@ class Bridge implements EventSubscriberInterface
      * @param Subscription $subscription
      *
      * @internal param \ArrayObject $tokens
+     * @SuppressWarnings(PHPMD.LongVariable)
      */
     protected function sendNotification($type, Subscription $subscription)
     {
@@ -154,6 +158,7 @@ class Bridge implements EventSubscriberInterface
 
     /**
      * @param BuildTokensFromSubscriptionEvent $event
+     * @SuppressWarnings(PHPMD.Superglobals)
      */
     public function buildSubscriptionTokens(BuildTokensFromSubscriptionEvent $event)
     {
@@ -163,15 +168,24 @@ class Bridge implements EventSubscriberInterface
         $subscription = $event->getSubscription();
         $tokens       = $event->getTokens();
 
-        $parseDateEvent = new ParseDateEvent($subscription->getUpdatedAt()->getTimestamp(), $GLOBALS['TL_CONFIG']['datimFormat']);
+        $parseDateEvent = new ParseDateEvent(
+            $subscription->getUpdatedAt()->getTimestamp(),
+            $GLOBALS['TL_CONFIG']['datimFormat']
+        );
         $eventDispatcher->dispatch(ContaoEvents::DATE_PARSE, $parseDateEvent);
         $tokens['datetime'] = $parseDateEvent->getResult();
 
-        $parseDateEvent = new ParseDateEvent($subscription->getUpdatedAt()->getTimestamp(), $GLOBALS['TL_CONFIG']['dateFormat']);
+        $parseDateEvent = new ParseDateEvent(
+            $subscription->getUpdatedAt()->getTimestamp(),
+            $GLOBALS['TL_CONFIG']['dateFormat']
+        );
         $eventDispatcher->dispatch(ContaoEvents::DATE_PARSE, $parseDateEvent);
         $tokens['date'] = $parseDateEvent->getResult();
 
-        $parseDateEvent = new ParseDateEvent($subscription->getUpdatedAt()->getTimestamp(), $GLOBALS['TL_CONFIG']['timeFormat']);
+        $parseDateEvent = new ParseDateEvent(
+            $subscription->getUpdatedAt()->getTimestamp(),
+            $GLOBALS['TL_CONFIG']['timeFormat']
+        );
         $eventDispatcher->dispatch(ContaoEvents::DATE_PARSE, $parseDateEvent);
         $tokens['time'] = $parseDateEvent->getResult();
 

@@ -38,7 +38,7 @@ class BuildTokensFromRecipientEvent extends Event
      *
      * @param $recipient
      */
-    function __construct($recipient)
+    public function __construct($recipient)
     {
         $this->recipient = $recipient;
         $this->tokens    = new \ArrayObject();

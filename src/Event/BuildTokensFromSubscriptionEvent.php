@@ -39,7 +39,7 @@ class BuildTokensFromSubscriptionEvent extends Event
      *
      * @param $subscription
      */
-    function __construct($subscription)
+    public function __construct($subscription)
     {
         $this->subscription = $subscription;
         $this->tokens       = new \ArrayObject();

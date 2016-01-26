@@ -163,15 +163,24 @@ class Bridge implements EventSubscriberInterface
         $subscription = $event->getSubscription();
         $tokens       = $event->getTokens();
 
-        $parseDateEvent = new ParseDateEvent($subscription->getUpdatedAt()->getTimestamp(), $GLOBALS['TL_CONFIG']['datimFormat']);
+        $parseDateEvent = new ParseDateEvent(
+            $subscription->getUpdatedAt()->getTimestamp(),
+            $GLOBALS['TL_CONFIG']['datimFormat']
+        );
         $eventDispatcher->dispatch(ContaoEvents::DATE_PARSE, $parseDateEvent);
         $tokens['datetime'] = $parseDateEvent->getResult();
 
-        $parseDateEvent = new ParseDateEvent($subscription->getUpdatedAt()->getTimestamp(), $GLOBALS['TL_CONFIG']['dateFormat']);
+        $parseDateEvent = new ParseDateEvent(
+            $subscription->getUpdatedAt()->getTimestamp(),
+            $GLOBALS['TL_CONFIG']['dateFormat']
+        );
         $eventDispatcher->dispatch(ContaoEvents::DATE_PARSE, $parseDateEvent);
         $tokens['date'] = $parseDateEvent->getResult();
 
-        $parseDateEvent = new ParseDateEvent($subscription->getUpdatedAt()->getTimestamp(), $GLOBALS['TL_CONFIG']['timeFormat']);
+        $parseDateEvent = new ParseDateEvent(
+            $subscription->getUpdatedAt()->getTimestamp(),
+            $GLOBALS['TL_CONFIG']['timeFormat']
+        );
         $eventDispatcher->dispatch(ContaoEvents::DATE_PARSE, $parseDateEvent);
         $tokens['time'] = $parseDateEvent->getResult();
 

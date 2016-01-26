@@ -32,6 +32,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Class Bridge
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class Bridge implements EventSubscriberInterface
 {
@@ -126,6 +127,7 @@ class Bridge implements EventSubscriberInterface
      * @param Subscription $subscription
      *
      * @internal param \ArrayObject $tokens
+     * @SuppressWarnings(PHPMD.LongVariable)
      */
     protected function sendNotification($type, Subscription $subscription)
     {
@@ -154,6 +156,7 @@ class Bridge implements EventSubscriberInterface
 
     /**
      * @param BuildTokensFromSubscriptionEvent $event
+     * @SuppressWarnings(PHPMD.Superglobals)
      */
     public function buildSubscriptionTokens(BuildTokensFromSubscriptionEvent $event)
     {

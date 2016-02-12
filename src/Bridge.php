@@ -57,10 +57,21 @@ class Bridge implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            SubscriptionEvents::SUBSCRIBE                                              => 'subscribe',
-            SubscriptionEvents::CONFIRM_SUBSCRIPTION                                   => 'confirm',
-            SubscriptionEvents::UNSUBSCRIBE                                            => 'unsubscribe',
-            SubscriptionNotificationCenterBridgeEvents::BUILD_TOKENS_FROM_SUBSCRIPTION => 'buildSubscriptionTokens',
+            SubscriptionEvents::SUBSCRIBE => array(
+                array('subscribe'),
+            ),
+
+            SubscriptionEvents::CONFIRM_SUBSCRIPTION => array(
+                array('confirm'),
+            ),
+
+            SubscriptionEvents::UNSUBSCRIBE => array(
+                array('unsubscribe'),
+            ),
+
+            SubscriptionNotificationCenterBridgeEvents::BUILD_TOKENS_FROM_SUBSCRIPTION => array(
+                array('buildSubscriptionTokens'),
+            ),
         );
     }
 

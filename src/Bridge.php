@@ -169,39 +169,40 @@ class Bridge implements EventSubscriberInterface
 
     /**
      * @param BuildTokensFromSubscriptionEvent $event
-     * @SuppressWarnings(PHPMD.Superglobals)
      */
     public function buildSubscriptionTokens(BuildTokensFromSubscriptionEvent $event)
     {
+        global $container;
+
         /** @var EventDispatcher $eventDispatcher */
-        $eventDispatcher = $GLOBALS['container']['event-dispatcher'];
+        $eventDispatcher = $container['event-dispatcher'];
 
         $subscription = $event->getSubscription();
         $tokens       = $event->getTokens();
 
         $parseDateEvent = new ParseDateEvent(
             $subscription->getUpdatedAt()->getTimestamp(),
-            $GLOBALS['TL_CONFIG']['datimFormat']
+            \Config::get('datimFormat')
         );
         $eventDispatcher->dispatch(ContaoEvents::DATE_PARSE, $parseDateEvent);
         $tokens['datetime'] = $parseDateEvent->getResult();
 
         $parseDateEvent = new ParseDateEvent(
             $subscription->getUpdatedAt()->getTimestamp(),
-            $GLOBALS['TL_CONFIG']['dateFormat']
+            \Config::get('dateFormat')
         );
         $eventDispatcher->dispatch(ContaoEvents::DATE_PARSE, $parseDateEvent);
         $tokens['date'] = $parseDateEvent->getResult();
 
         $parseDateEvent = new ParseDateEvent(
             $subscription->getUpdatedAt()->getTimestamp(),
-            $GLOBALS['TL_CONFIG']['timeFormat']
+            \Config::get('timeFormat')
         );
         $eventDispatcher->dispatch(ContaoEvents::DATE_PARSE, $parseDateEvent);
         $tokens['time'] = $parseDateEvent->getResult();
 
         /** @var EntityAccessor $entityAccessor */
-        $entityAccessor = $GLOBALS['container']['doctrine.orm.entityAccessor'];
+        $entityAccessor = $container['doctrine.orm.entityAccessor'];
 
         $properties = $entityAccessor->getProperties($subscription);
 

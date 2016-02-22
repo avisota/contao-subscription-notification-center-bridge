@@ -14,11 +14,6 @@
  */
 
 /**
- * Event subscribers
- */
-$GLOBALS['TL_EVENT_SUBSCRIBERS'][] = 'Avisota\Contao\SubscriptionNotificationCenterBridge\Bridge';
-
-/**
  * Notifications
  */
 $GLOBALS['NOTIFICATION_CENTER']['NOTIFICATION_TYPE']['avisota-subscription'] = array

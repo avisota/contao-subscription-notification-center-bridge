@@ -3,10 +3,12 @@
     <body>
       <trans-unit id="tl_nc_notification.type.avisota-subscription">
         <source>Avisota Subscription</source>
+        <target>Assinatura Avisota</target>
         
       </trans-unit>
       <trans-unit id="tl_nc_notification.type.avisota_subscribe">
         <source>Subscribe</source>
+        <target>Inscreva-se</target>
         
       </trans-unit>
       <trans-unit id="tl_nc_notification.type.avisota_confirm_subscription">
@@ -15,6 +17,7 @@
       </trans-unit>
       <trans-unit id="tl_nc_notification.type.avisota_unsubscribe">
         <source>Unsubscribe</source>
+        <target>Cancelar subscrição</target>
         
       </trans-unit>
       <trans-unit id="tl_nc_notification.avisotaFilterByMailingList.0">

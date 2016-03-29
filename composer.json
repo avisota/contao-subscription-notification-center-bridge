@@ -32,7 +32,7 @@
         "contao/core": ">=3.5,<3.6",
         "contao-community-alliance/composer-plugin": "~2.4",
         "terminal42/notification_center": "~1.3",
-        "avisota/contao-subscription": "~3.0"
+        "avisota/contao-subscription": "dev-release/3.1.0"
     },
     "require-dev": {
         "phpcq/all-tasks": "~1.1"

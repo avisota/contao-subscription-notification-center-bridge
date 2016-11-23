@@ -15,9 +15,6 @@
 
 namespace Avisota\Contao\SubscriptionNotificationCenterBridge\Event;
 
-use NotificationCenter\Model\Notification;
-use Symfony\Component\EventDispatcher\Event;
-
 /**
  * Class Bridge
  */

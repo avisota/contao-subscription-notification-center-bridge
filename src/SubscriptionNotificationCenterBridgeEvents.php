@@ -15,8 +15,6 @@
 
 namespace Avisota\Contao\SubscriptionNotificationCenterBridge;
 
-use NotificationCenter\Model\Notification;
-
 /**
  * Class Bridge
  */
